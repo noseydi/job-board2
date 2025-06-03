@@ -1,26 +1,33 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 
 export interface Job {
-  id : number ;
-  title : string ; 
-  body : string ;
+  id: number;
+  title: string;
+  company_name: string;
+  url: string;
+  description: string;
+  category: string;
 }
+
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class JobService {
+  private apiUrl = 'https://remotive.io/api/remote-jobs';
 
-  private apiUrl = 'https://jsonplaceholder.typicode.com/posts' ;
+  constructor(private http: HttpClient) {}
 
-  constructor(private http : HttpClient) { }
-
-  getJobs() : Observable<Job[]>{
-    return this.http.get<Job[]>(this.apiUrl);
+  getJobs(search: string = ''): Observable<Job[]> {
+    return this.http.get<{ jobs: Job[] }>(`${this.apiUrl}?search=${search}`).pipe(
+      map(res => res.jobs)
+    );
   }
-  getJob(id : number ) : Observable<Job> 
-  {
-    return this.http.get<Job>(`${this.apiUrl}/${id}`);
+
+  getJobById(id: number): Observable<Job | undefined> {
+    return this.getJobs().pipe(
+      map(jobs => jobs.find(job => job.id === id))
+    );
   }
 }
