@@ -15,14 +15,13 @@ export interface Job {
   providedIn: 'root',
 })
 export class JobService {
-  private apiUrl = 'https://remotive.io/api/remote-jobs';
+private apiUrl = '/assets/mock-jobs.json';
 
   constructor(private http: HttpClient) {}
 
-getJobs(): Observable<any[]> {
-  return this.http.get<any[]>('/assets/mock-jobs.json');
+getJobs(): Observable<Job[]> {
+  return this.http.get<Job[]>(this.apiUrl);
 }
-
   getJobById(id: number): Observable<Job | undefined> {
     return this.getJobs().pipe(
       map(jobs => jobs.find(job => job.id === id))

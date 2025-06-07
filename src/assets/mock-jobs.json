@@ -1,6 +1,16 @@
-{
-  "jobs": [
-    { "title": "Frontend Developer", "company": "TechCo", "url": "#" },
-    { "title": "Backend Developer", "company": "DataCorp", "url": "#" }
-  ]
-}
+[
+  {
+    "id": 1,
+    "title": "Frontend Developer",
+    "company": "Tech Corp",
+    "description": "Develop UI components",
+    "category": "Frontend"
+  },
+  {
+    "id": 2,
+    "title": "Backend Developer",
+    "company": "API Inc.",
+    "description": "Work on APIs",
+    "category": "Backend"
+  }
+]

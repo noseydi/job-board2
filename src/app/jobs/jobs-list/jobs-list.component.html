@@ -1,8 +1,0 @@
-<p>jobs-list works!</p>
-<h2>Job Listings</h2>
-    <ul *ngIf="jobs.length; else loading">
-      <li *ngFor="let job of jobs">
-        <a [routerLink]="['/jobs', job.id]">{{ job.title }}</a>
-      </li>
-    </ul>
-    <ng-template #loading>Loading jobs...</ng-template>

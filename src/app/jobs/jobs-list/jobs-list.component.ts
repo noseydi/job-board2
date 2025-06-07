@@ -20,11 +20,11 @@ import { JobService, Job } from '../job.service';
 export class JobsListComponent implements OnInit {
   jobs: Job[] = [];
 
-  constructor(private jobService: JobService) {}
+constructor(private jobService: JobService) {}
 
-  ngOnInit() {
-    this.jobService.getJobs().subscribe(data => {
-      this.jobs = data;
-    });
-  }
+ngOnInit(): void {
+  this.jobService.getJobs().subscribe(data => {
+    this.jobs = data;
+  });
+}
 }
