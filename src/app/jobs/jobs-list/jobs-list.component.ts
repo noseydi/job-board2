@@ -23,7 +23,7 @@ export class JobsListComponent implements OnInit {
   constructor(private jobService: JobService) {}
 
   ngOnInit() {
-    this.jobService.getJobs('developer').subscribe(data => {
+    this.jobService.getJobs().subscribe(data => {
       this.jobs = data;
     });
   }

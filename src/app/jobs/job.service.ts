@@ -19,11 +19,9 @@ export class JobService {
 
   constructor(private http: HttpClient) {}
 
-  getJobs(search: string = ''): Observable<Job[]> {
-    return this.http.get<{ jobs: Job[] }>(`${this.apiUrl}?search=${search}`).pipe(
-      map(res => res.jobs)
-    );
-  }
+getJobs(): Observable<any[]> {
+  return this.http.get<any[]>('/assets/mock-jobs.json');
+}
 
   getJobById(id: number): Observable<Job | undefined> {
     return this.getJobs().pipe(
